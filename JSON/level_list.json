@@ -1,0 +1,26 @@
+[
+  {
+    "level": "1",
+    "background": "http://ydkcar.b0.upaiyun.com/13679201.png",
+    "title": "北京",
+    "amount": 16,
+    "questions": {
+      "1": 136,
+      "2": 137,
+      "15": 156,
+      "16": 187
+    }
+  },
+  {
+    "level": "2",
+    "background": "http://ydkcar.b0.upaiyun.com/13679201.png",
+    "title": "上海",
+    "amount": 16,
+    "questions": {
+      "1": 136,
+      "2": 137,
+      "15": 156,
+      "16": 187
+    }
+  }
+]
