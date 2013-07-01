@@ -129,10 +129,59 @@
         }
       }
     ]
+    
+###Level/more
+
+更多关卡,没有新关卡的时候如果去请求更多关卡时
+
+`POST`
+
+* udid `用户ID`
+* top_level `目前最高关卡` 3-2  level 3-step 2 
+* user_score `用户总分`
+* user_ratio `正确率`
+
+`return`
+
+	{
+		"message":"目前还没有新关卡,小编正在努力",
+		"image":"http://uoyun.com/ddd.png",
+		"status":"1",
+	}
+	
+	or
+	
+	{
+		"message":"新关卡即将开放,提前剧透给各位",
+		"image":"http://uoyun.com/ddd.png",
+		"status":"1",
+	}
+
+	// 这时候用户点击就会直接加载新关卡
+	{
+		"message":"关卡开放",
+		"status":"2",
+		"level":30
+	}
+
+
+
 
 ###Notification
 
 `GET`
+
+* udid : 用户的udid,不同用户获得不同的通知
+
+`return`
+
+	{
+		"question_update":"134,155,178",
+		"event":"活动信息",
+		"version":"0.3"
+		"version_note":"赶快升级,有更多更好的玩法",
+	}
+
 
 
 #Setting
@@ -167,4 +216,5 @@
 --------
 
 #i18N 多语言
+#友盟
 
