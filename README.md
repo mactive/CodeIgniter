@@ -178,8 +178,8 @@
 	{
 		"question_update":"134,155,178",
 		"event":"活动信息",
-		"version":"0.3"
-		"version_note":"赶快升级,有更多更好的玩法",
+		"version":"0.3",
+		"version_note":"赶快升级,有更多更好的玩法"
 	}
 
 

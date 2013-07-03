@@ -38,8 +38,11 @@
 |
 */
 
-$route['default_controller'] = "stock";
+$route['default_controller'] = "";
 $route['404_override'] = '';
+
+//level o
+$route['level/(:any)'] = "level/index/$1"; 
 
 
 /* End of file routes.php */
