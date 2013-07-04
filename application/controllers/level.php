@@ -24,6 +24,8 @@ class Level extends CI_controller {
 			$tt = array('tt' => "t2","bb" => 222 );
 			echo json_encode($tt);
 		}
+
+		$this->load->view("level");
 	}
 
 	public function lki()
@@ -37,3 +39,6 @@ class Level extends CI_controller {
 		echo "more";
 	}
 }
+
+/* End of file level.php */
+/* Location: ./application/controller/level.php */
