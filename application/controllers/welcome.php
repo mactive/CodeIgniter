@@ -20,8 +20,15 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->library('Layout');
+
 		$data = array();
 		$this->layout->view('layouts/default_layout', $data);
+		$this->layout->placeholder("title", "Short Stories");
+
+		placeholder(300);
+
+
+
 		// $this->load->view('layouts/default_layout');
 	}
 }
