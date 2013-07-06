@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Backend extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -23,6 +23,49 @@ class Welcome extends CI_Controller {
 		$this->load->view('admin/header');
 		$this->load->view('admin/footer');
 	}
+
+	/**
+	 * 问题列表 显示所有问题
+	 * question list
+	 *
+	 */
+	public function questions()
+	{
+		$this->load->model("QuestionModel");
+		$data['query'] = $this->QuestionModel->get_last_ten_entries();
+
+
+		$this->load->view('admin/header');
+		print_r($data);
+		$this->load->view('admin/footer');
+	}
+
+
+	/**
+	 * 问题列表 显示所有问题
+	 * level list
+	 *
+	 */
+	public function levels()
+	{
+
+	}
+
+
+
+	/**
+	 * 问题列表 显示所有问题
+	 * setting
+	 *
+	 */
+	public function setting()
+	{
+
+	}
+
+
+
+
 }
 
 /* End of file welcome.php */

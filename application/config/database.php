@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'stockbro';
-$db['default']['password'] = 'TG7a6m5hPj7TRLJ8';
-$db['default']['database'] = 'stockbro';
+$db['default']['username'] = 'ydkcar';
+$db['default']['password'] = '5tTDPu6XFKf4WU8s';
+$db['default']['database'] = 'ydkcar';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
