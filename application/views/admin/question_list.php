@@ -5,7 +5,7 @@
 	?>
 		<div class="span2">
 			<a href="/backend/question/<?=$value['id'] ?>" 
-			 	style="background:url('<?=$value['thumbnail'] ?>');">
+			 	style="background-image:url('<?=$value['thumbnail'] ?>');">
 			</a>
 
 			<?=$value['title'] ?>
