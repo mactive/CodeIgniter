@@ -26,7 +26,13 @@ class QuestionModel extends CI_Model {
     function get_last_ten_entries()
     {
         $query = $this->db->get('questions', 10);
-        return $query->result();
+        return $query->result_array();
+    }
+
+    function get_question($id)
+    {
+        $query = $this->db->get_where('questions', array('id'=>$id));
+        return $query->row_array();
     }
 
     function insert_entry()
@@ -61,7 +67,7 @@ class QuestionModel extends CI_Model {
         $this->image    = isset($_POST['image']) ? trim($_POST['image']): $image;
         $this->type     = isset($_POST['type']) ? trim($_POST['type']): $type;
 
-        
+
         if (!empty($_POST['id'])) {
             # code...
             $this->db->update('questions', $this, array('id' => $_POST['id']));

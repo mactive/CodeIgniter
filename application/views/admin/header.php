@@ -43,9 +43,9 @@
           <a class="brand" href="#"><span class="logo"></span>你不懂车App</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">问题Question</a></li>
-              <li><a href="#about">级别调整Level</a></li>
-              <li><a href="#contact">全局设置Setting</a></li>
+              <li class="active"><a href="/backend/questions">问题Question</a></li>
+              <li><a href="/backend/levels">级别调整Level</a></li>
+              <li><a href="/backend/setting">全局设置Setting</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

@@ -17,6 +17,15 @@ class Backend extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct()
+    {
+        // Call the Model constructor
+        parent::__construct();
+        $this->load->model("QuestionModel");
+    }
+
+
 	public function index()
 	{
 
@@ -31,13 +40,23 @@ class Backend extends CI_Controller {
 	 */
 	public function questions()
 	{
-		$this->load->model("QuestionModel");
 		$data['query'] = $this->QuestionModel->get_last_ten_entries();
 
 
 		$this->load->view('admin/header');
-		print_r($data);
+		$this->load->view('admin/question_list',$data);
 		$this->load->view('admin/footer');
+	}
+
+	public function question($question_id)
+	{
+		if (!empty($question_id)) {
+			$data['query'] = $this->QuestionModel->get_question($question_id);
+
+			$this->load->view('admin/header');
+			$this->load->view('admin/question',$data);
+			$this->load->view('admin/footer');
+		}
 	}
 
 
