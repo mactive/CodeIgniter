@@ -19,7 +19,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('layouts/default_layout');
+		$this->load->library('Layout');
+		$data = array();
+		$this->layout->view('layouts/default_layout', $data);
+		// $this->load->view('layouts/default_layout');
 	}
 }
 
