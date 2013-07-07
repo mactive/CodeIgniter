@@ -1,11 +1,38 @@
-<div class="row question_list pl_20px">
+<div class="container ">
 
-	<?php foreach ($query as $value) {
+	<p>
+		<a class="btn btn-large btn-primary" href="/backend/question/<?=$id?>/update">Edit</a>
+		<a class="btn btn-large btn-danger" href="/backend/question/<?=$id?>/delete">Delete</a>
+	</p>
+
+
+
+	<dl class="dl-horizontal">
+
+	<?php foreach ($query as $key => $value) {
 	# code...
 	?>
-		<?=$value ?><br>
+		<dt><?=$key ?></dt>
 
+		<?php if ($key == "thumbnail"): ?>
+
+			<dd><img class="img-rounded" src="<?=$value?>"></dd>;
+
+		<?php elseif($key == 'answer'): ?>
+
+			<dl class="dl-horizontal">
+				<?php foreach ($value as $k => $val): ?>
+					<dt><?=$k?></dt>
+					<dd><?=$val?></dd>
+				<?php endforeach ?>
+				
+			</dl>
+
+		<?php else: ?>
+		  	<dd><?=$value ?></dd>
+
+		<?php endif ?>
 
 	<?php } ?>
-
+	</dl>
 </div>

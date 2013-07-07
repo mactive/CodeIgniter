@@ -1,4 +1,6 @@
-<div class="row question_list pl_20px">
+
+<div class="container">
+<div class="row question_list">
 
 	<?php foreach ($query as $key => $value) {
 	# code...
@@ -8,11 +10,13 @@
 			 	style="background-image:url('<?=$value['thumbnail'] ?>');">
 			</a>
 
-			<?=$value['title'] ?>
+			<p class="text-left">ID<?=$value['id'] ?>: <?=$value['title'] ?></p>
 
 		</div>
 
 
 	<?php } ?>
+
+</div>
 
 </div>

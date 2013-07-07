@@ -11,7 +11,7 @@ class QuestionModel extends CI_Model {
     var $tip = '';
     var $grade = 'easy';
     var $height = '480';
-    var $slide = '6';
+    var $slice = '6';
     var $thumbnail = '';
     var $image = '';
     var $type = 'car';
@@ -31,8 +31,12 @@ class QuestionModel extends CI_Model {
 
     function get_question($id)
     {
+        $res = array();
         $query = $this->db->get_where('questions', array('id'=>$id));
-        return $query->row_array();
+        $res =  $query->row_array();
+        $res['answer'] = json_decode($res['answer']);
+
+        return $res;
     }
 
     function insert_entry()
@@ -45,7 +49,7 @@ class QuestionModel extends CI_Model {
         $this->tip      = isset($_POST['tip']) ? trim($_POST['tip']): $tip;
         $this->grade    = isset($_POST['grade']) ? trim($_POST['grade']): $grade;
         $this->height   = isset($_POST['height']) ? trim($_POST['height']): $height;
-        $this->slide    = isset($_POST['slide']) ? trim($_POST['slide']): $slide;
+        $this->slice    = isset($_POST['slice']) ? trim($_POST['slice']): $slice;
         $this->thumbnail= isset($_POST['thumbnail']) ? trim($_POST['thumbnail']): $thumbnail;
         $this->image    = isset($_POST['image']) ? trim($_POST['image']): $image;
         $this->type     = isset($_POST['type']) ? trim($_POST['type']): $type;
@@ -53,25 +57,14 @@ class QuestionModel extends CI_Model {
         $this->db->insert('questions', $this);
     }
 
-    function update_entry()
+    function update_entry($data)
     {
-        $this->title    = isset($_POST['title']) ? trim($_POST['title']): $title;
-        $this->answer   = isset($_POST['answer']) ? trim($_POST['answer']): $answer;
-        $this->currect  = isset($_POST['currect']) ? trim($_POST['currect']): $currect;
-        $this->why      = isset($_POST['why']) ? trim($_POST['why']): $why;
-        $this->tip      = isset($_POST['tip']) ? trim($_POST['tip']): $tip;
-        $this->grade    = isset($_POST['grade']) ? trim($_POST['grade']): $grade;
-        $this->height   = isset($_POST['height']) ? trim($_POST['height']): $height;
-        $this->slide    = isset($_POST['slide']) ? trim($_POST['slide']): $slide;
-        $this->thumbnail= isset($_POST['thumbnail']) ? trim($_POST['thumbnail']): $thumbnail;
-        $this->image    = isset($_POST['image']) ? trim($_POST['image']): $image;
-        $this->type     = isset($_POST['type']) ? trim($_POST['type']): $type;
-
-
-        if (!empty($_POST['id'])) {
+        if (!empty($data['id'])) {
             # code...
-            $this->db->update('questions', $this, array('id' => $_POST['id']));
+            $this->db->update('questions', $data, array('id' => $data['id']));
 
+        }else{
+            error_log('no id');
         }
 
     }
