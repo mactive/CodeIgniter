@@ -217,4 +217,34 @@
 
 #i18N 多语言
 #友盟
+#dev_note
+###CodeIgniter 加载第三方(UpYun)Class
+	
+	// 官方支持
+	$this->load->library('class_name', $config, 'object name')
+	
+Code
+
+	$params = array('ydkcar-question', 'user', 'password');
+
+	$this->load->library('UpYunClass',$params,'upyun');
+	
+	$list = $this->upyun->getList();
+	
+Change UpYun
+
+	public function __construct($params) {
+
+        // $bucketname, $username, $password, $endpoint = NULL, $timeout = 30
+
+        $this->_bucketname = $params[0];
+		$this->_username = $params[1];;
+		$this->_password = md5($params[2]);
+
+        $this->endpoint = is_null($params[3]) ? self::ED_AUTO :  $params[3];
+        $this->_timeout = is_null($params[4]) ? 30 : $params[4];
+
+	}
+	
+
 
