@@ -211,7 +211,7 @@
 	{"status":"success"}
 	{"status":"failed","error":"repeat email"}
 	
-![](http://chart.7878.com/td/sh600006.gif)
+![](http://ydkcar-question.b0.upaiyun.com/demo/sample_thumb_1.jpeg)
 
 --------
 

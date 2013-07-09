@@ -1,0 +1,72 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+
+class UpyunIO extends CI_Controller {
+
+	const PATH = 'http://ydkcar-question.b0.upaiyun.com/';
+
+	function __construct()
+    {
+        // Call the Model constructor
+        parent::__construct();
+
+        $params = array('ydkcar-question', 'mactive', 'mengqian2',NULL,NULL);
+		$this->load->library('UpYunClass',$params,'upyun');
+    }
+
+    public function test()
+    {
+		// $this->someclass->some_function();
+    	echo "=====test====\r\n";
+    }
+
+    public function getList()
+    {
+		$data = array();
+		try {
+		    $list = $this->upyun->getList('/test/');
+		    $data['path'] = self::PATH . 'test/';
+		    // print_r($list);
+		    $data['list'] = $list;
+		    $this->load->view('admin/header');
+		    $this->load->view('upyun/list',$data);
+			$this->load->view('admin/footer');
+		}
+		catch(Exception $e) {
+		    echo $e->getCode();
+		    echo $e->getMessage();
+		}
+
+    }
+
+    public function upload_form()
+    {
+    	$this->load->view('upyun/upload_form');
+    }
+
+    public function upload()
+    {
+
+    	try {
+
+    		$file_name = $_FILES["file"]["name"];  
+			$tmp_file = $_FILES["file"]["tmp_name"];  
+		    
+
+		    echo "=========Upload File Directly\r\n";
+
+		    $fh = fopen($tmp_file, 'rb');
+		    $rsp = $this->upyun->writeFile('/test/'.$file_name, $fh, True);   // 上传图片，自动创建目录
+		    fclose($fh);
+		    var_dump($rsp);
+		    echo "=========DONE\n\r\n";
+		}
+	    catch(Exception $e) {
+		    echo $e->getCode();
+		    echo $e->getMessage();
+		}
+    }
+}
+
+/* End of file upyun.php controller */
+/* Location: ./application/controllers/upyun.php */

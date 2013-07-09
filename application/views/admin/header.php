@@ -48,6 +48,7 @@
               <li class="active"><a href="/backend/questions">问题Question</a></li>
               <li><a href="/backend/levels">级别调整Level</a></li>
               <li><a href="/backend/setting">全局设置Setting</a></li>
+              <li><a href="/upyunio/getList/">又拍云UpYun</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
