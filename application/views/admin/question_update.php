@@ -56,16 +56,20 @@
 		    	<!-- 问题图片 js控制 -->
 		    	<?php elseif($key == 'thumbnail'): ?>
 
-				<input type="text" id="thumbnail_input"  value="">
-
 				<a class="btn btn-success" data-target="#thumbnail-item" data-toggle="modal">Upload</a>
+
+				<input type="hidden" id="thumbnail_input" name="thumbnail"  value="">
+
+				<img src="<?=$value ?>" class="img-polaroid 200px">
 
 		    	<!-- 大图图片 js控制 -->
 		    	<?php elseif($key == 'image'): ?>
 
-				<input type="text" id="image_input"  value="">
-
 				<a class="btn btn-success" data-target="#image-item" data-toggle="modal">Upload</a>
+
+				<input type="hidden" id="image_input" name="image"  value="">
+
+				<img src="<?=$value ?>" class="img-polaroid 200px">
 
 
 		    	<!-- 问题 难度 -->

@@ -18,6 +18,9 @@ class Curd extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
+	const PATH = 'http://ydkcar-question.b0.upaiyun.com/';
+
+
 	var $title      = '';
     var $answer     = '';
     var $currect       = '';
@@ -52,13 +55,18 @@ class Curd extends CI_Controller {
         $data['grade']= isset($_POST['grade']) ? trim($_POST['grade']): $grade;
         $data['height']= isset($_POST['height']) ? trim($_POST['height']): $height;
         $data['slice']= isset($_POST['slice']) ? trim($_POST['slice']): $slice;
-        $data['thumbnail']= isset($_POST['thumbnail']) ? trim($_POST['thumbnail']): $thumbnail;
-        $data['image']= isset($_POST['image']) ? trim($_POST['image']): $image;
+        $data['thumbnail']= isset($_POST['thumbnail']) ? self::PATH.trim($_POST['thumbnail']): $thumbnail;
+        $data['image']= isset($_POST['image']) ? self::PATH.trim($_POST['image']): $image;
         $data['type']= isset($_POST['type']) ? trim($_POST['type']): $type;
 
         $data['answer'] = $this->encode_answer($data['answer']);
 
         $this->QuestionModel->update_entry($data);
+
+
+        $this->load->view('admin/header');
+        $this->load->view('message',array('title' => 'Updata success','message'=>'moving on'));
+        $this->load->view('admin/footer');
 	}
 
 	public function question_insert()
@@ -74,13 +82,17 @@ class Curd extends CI_Controller {
         $data['grade']= isset($_POST['grade']) ? trim($_POST['grade']): $grade;
         $data['height']= isset($_POST['height']) ? trim($_POST['height']): $height;
         $data['slice']= isset($_POST['slice']) ? trim($_POST['slice']): $slice;
-        $data['thumbnail']= isset($_POST['thumbnail']) ? trim($_POST['thumbnail']): $thumbnail;
-        $data['image']= isset($_POST['image']) ? trim($_POST['image']): $image;
+        $data['thumbnail']= isset($_POST['thumbnail']) ? self::PATH.trim($_POST['thumbnail']): $thumbnail;
+        $data['image']= isset($_POST['image']) ? self::PATH.trim($_POST['image']): $image;
         $data['type']= isset($_POST['type']) ? trim($_POST['type']): $type;
 
         $data['answer'] = $this->encode_answer($data['answer']);
 
         $this->QuestionModel->insert_entry($data);
+
+        $this->load->view('admin/header');
+        $this->load->view('message',array('title' => 'Insert success','message'=>'Keep walking.'));
+        $this->load->view('admin/footer');
 	}
 
 	public function encode_answer($answer)
