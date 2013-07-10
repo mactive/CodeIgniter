@@ -6,33 +6,36 @@
 	</p>
 
 
-
-	<dl class="dl-horizontal">
+	<table class="table table-striped">
 
 	<?php foreach ($query as $key => $value) {
 	# code...
 	?>
-		<dt><?=$key ?></dt>
+		<tr>
+			<td width="200"><?=$key ?></td>
+			<td>
+				<?php if ($key == "thumbnail"): ?>
 
-		<?php if ($key == "thumbnail"): ?>
+					<img class="img-rounded" src="<?=$value?>">
 
-			<dd><img class="img-rounded" src="<?=$value?>"></dd>;
+				<?php elseif($key == 'answer'): ?>
 
-		<?php elseif($key == 'answer'): ?>
+						
+						<?php foreach ($value as $k => $val): ?>
+							<h5><?=$k?>: 
+							<?=$val?></h5>
+						<?php endforeach ?>
+						
+					</dd>
 
-			<dl class="dl-horizontal">
-				<?php foreach ($value as $k => $val): ?>
-					<dt><?=$k?></dt>
-					<dd><?=$val?></dd>
-				<?php endforeach ?>
-				
-			</dl>
+				<?php else: ?>
+				  	<?=$value ?>
 
-		<?php else: ?>
-		  	<dd><?=$value ?></dd>
+				<?php endif ?>
 
-		<?php endif ?>
-
+			</td>
+		</tr>	
 	<?php } ?>
-	</dl>
+
+	</table>
 </div>

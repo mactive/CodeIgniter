@@ -5,6 +5,7 @@ class UpyunIO extends CI_Controller {
 
 	const PATH = 'http://ydkcar-question.b0.upaiyun.com/';
 
+
 	function __construct()
     {
         // Call the Model constructor
@@ -17,15 +18,17 @@ class UpyunIO extends CI_Controller {
     public function test()
     {
 		// $this->someclass->some_function();
-    	echo "=====test====\r\n";
+    	$tt = mktime();
+    	echo $tt."=====test====\r\n";
+
     }
 
     public function getList()
     {
 		$data = array();
 		try {
-		    $list = $this->upyun->getList('/test/');
-		    $data['path'] = self::PATH . 'test/';
+		    $list = $this->upyun->getList('/');
+		    $data['path'] = self::PATH ;
 		    // print_r($list);
 		    $data['list'] = $list;
 		    $this->load->view('admin/header');
@@ -39,9 +42,10 @@ class UpyunIO extends CI_Controller {
 
     }
 
-    public function upload_form()
+    public function upload_form($handle='handle_input')
     {
-    	$this->load->view('upyun/upload_form');
+    	$data['handle_input'] = $handle;
+    	$this->load->view('upyun/upload_form',$data);
     }
 
     public function upload()
@@ -51,15 +55,21 @@ class UpyunIO extends CI_Controller {
 
     		$file_name = $_FILES["file"]["name"];  
 			$tmp_file = $_FILES["file"]["tmp_name"];  
-		    
+		    $handle_input = $_POST['handle_input'];
 
-		    echo "=========Upload File Directly\r\n";
+		    // echo "=========Upload File Directly\r\n";
 
 		    $fh = fopen($tmp_file, 'rb');
-		    $rsp = $this->upyun->writeFile('/test/'.$file_name, $fh, True);   // 上传图片，自动创建目录
+
+		    $time_name = mktime();
+
+		    $rsp = $this->upyun->writeFile('/'.$time_name, $fh, True);   // 上传图片，自动创建目录
 		    fclose($fh);
-		    var_dump($rsp);
-		    echo "=========DONE\n\r\n";
+		    // var_dump($rsp);
+		    // echo "=========DONE\n\r\n";
+		    $data['time_name'] = $time_name;
+		    $data['handle_input'] = $handle_input;
+		    $this->load->view('upyun/upload_success',$data);
 		}
 	    catch(Exception $e) {
 		    echo $e->getCode();
