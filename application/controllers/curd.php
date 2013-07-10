@@ -63,13 +63,7 @@ class Curd extends CI_Controller {
 
         $this->QuestionModel->update_entry($data);
 
-
         $this->load->view('admin/header');
-
-        echo $_POST['thumbnail'].$_POST['image'];
-        echo $data['thumbnail']."<br>";
-        echo $data['image'];
-
         $this->load->view('message',array('title' => 'Updata success','message'=>'moving on'));
         $this->load->view('admin/footer');
 	}

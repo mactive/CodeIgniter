@@ -57,7 +57,7 @@
 
 				<input type="hidden" id="thumbnail_input" name="thumbnail"  value="<?=$value ?>">
 
-				<img src="<?=$value ?>" class="img-polaroid 200px">
+				<img src="<?=$value ?>" class="img-polaroid max200">
 
 		    	<!-- 大图图片 js控制 -->
 		    	<?php elseif($key == 'image'): ?>
@@ -66,7 +66,7 @@
 
 				<input type="hidden" id="image_input" name="image"  value="<?=$value ?>">
 
-				<img src="<?=$value ?>" class="img-polaroid 200px">
+				<img src="<?=$value ?>" class="img-polaroid max200">
 
 
 		    	<!-- 问题 难度 -->

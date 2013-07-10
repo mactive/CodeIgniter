@@ -85,4 +85,15 @@ class QuestionModel extends CI_Model {
 
     }
 
+    function delete_entry($id)
+    {
+        if (!empty($id)) {
+            # code...
+            $this->db->delete('questions', array('id' => $id)); 
+        }else{
+            error_log('no id');
+        }
+
+    }
+
 }

@@ -7,7 +7,6 @@
 
         <script language="javascript">
             $(document).ready(function(){
-                alert("<?=$handle_input ?>");
                 var src_string = "<?=$path?><?=$time_name?>";
 
                 var target = $('#<?=$handle_input ?>', window.parent.document);

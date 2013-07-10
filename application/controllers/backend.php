@@ -69,6 +69,11 @@ class Backend extends CI_Controller {
 				$this->load->view('admin/question_update',$data);
 				$this->load->view('admin/footer');
 			}
+			if ($action == "delete") {
+				# code...
+				$this->QuestionModel->delete_entry($question_id);
+				redirect('/backend/questions');
+			}
 
 		}else{
 			if ($action == "add") {
