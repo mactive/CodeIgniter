@@ -4,17 +4,17 @@
 
 class QuestionModel extends CI_Model {
 
-    var $title      = '';
-    var $answer     = '';
-    var $currect       = '';
-    var $why = '';
-    var $tip = '';
-    var $grade = 'easy';
-    var $height = '480';
-    var $slice = '6';
-    var $thumbnail = '';
-    var $image = '';
-    var $type = 'car';
+    private $title      = '默认问题';
+    private $answer     = array("A"=>"t1","B"=>"t2","C"=>"t3","D"=>"t4");
+    private $currect    = '';
+    private $why        = '';
+    private $tip        = '';
+    private $grade      = 'easy';
+    private $height     = '480';
+    private $slice      = '6';
+    private $thumbnail  = '';
+    private $image      = '';
+    private $type       = 'car';
 
 
     function __construct()
@@ -23,10 +23,33 @@ class QuestionModel extends CI_Model {
         parent::__construct();
     }
     
-    function get_last_ten_entries()
+    public function get_last_ten_entries()
     {
         $query = $this->db->get('questions', 10);
         return $query->result_array();
+    }
+
+    public function question_model()
+    {
+        $data = array();
+
+
+        $data['title']  = $this->title;
+        $data['answer'] = $this->answer;
+        $data['currect']= $this->currect;
+        $data['why']    = $this->why;
+        $data['tip']    = $this->tip;
+        $data['grade']  = $this->grade;
+        $data['height'] = $this->height;
+        $data['slice']  = $this->slice;
+        $data['thumbnail']= $this->thumbnail;
+        $data['image']  = $this->image;
+        $data['type']   = $this->type;
+
+        $data['answer'] = $this->answer;
+
+
+        return $data;
     }
 
     function get_question($id)
@@ -39,22 +62,15 @@ class QuestionModel extends CI_Model {
         return $res;
     }
 
-    function insert_entry()
+    function insert_entry($data)
     {
          // please read the below note
-        $this->title    = isset($_POST['title']) ? trim($_POST['title']): $title;
-        $this->answer   = isset($_POST['answer']) ? trim($_POST['answer']): $answer;
-        $this->currect  = isset($_POST['currect']) ? trim($_POST['currect']): $currect;
-        $this->why      = isset($_POST['why']) ? trim($_POST['why']): $why;
-        $this->tip      = isset($_POST['tip']) ? trim($_POST['tip']): $tip;
-        $this->grade    = isset($_POST['grade']) ? trim($_POST['grade']): $grade;
-        $this->height   = isset($_POST['height']) ? trim($_POST['height']): $height;
-        $this->slice    = isset($_POST['slice']) ? trim($_POST['slice']): $slice;
-        $this->thumbnail= isset($_POST['thumbnail']) ? trim($_POST['thumbnail']): $thumbnail;
-        $this->image    = isset($_POST['image']) ? trim($_POST['image']): $image;
-        $this->type     = isset($_POST['type']) ? trim($_POST['type']): $type;
-
-        $this->db->insert('questions', $this);
+        if (empty($data['id'])) {
+            # code...
+            $this->db->insert('questions', $data);
+        }else{
+            error_log("id is not empty");
+        }
     }
 
     function update_entry($data)

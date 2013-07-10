@@ -1,8 +1,8 @@
 <div class="container ">
 
 	<p>
-		<a class="btn btn-large btn-primary" href="/backend/question/<?=$id?>/update">Edit</a>
-		<a class="btn btn-large btn-danger" href="/backend/question/<?=$id?>/delete">Delete</a>
+		<a class="btn btn-large btn-primary" href="/backend/question/update/<?=$id?>">Edit</a>
+		<a class="btn btn-large btn-danger" href="/backend/question/delete/<?=$id?>">Delete</a>
 	</p>
 
 

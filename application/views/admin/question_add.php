@@ -1,8 +1,5 @@
 <div class="container ">
 
-	<p>
-		<a class="btn btn-large btn-primary" href="/backend/question/view/<?=$id?>">Back</a>
-	</p>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -13,7 +10,7 @@
     });
 </script>
 
-<form class="form-horizontal" action="/curd/question_update" method="post" enctype="Multipart/form-data">
+<form class="form-horizontal" action="/curd/question_insert" method="post" enctype="Multipart/form-data">
 	<?php foreach ($query as $key => $value) {
 	# code...
 	?>
@@ -21,13 +18,8 @@
 		    <label class="control-label" for="<?=$key ?>"><?=$key ?></label>
 		    <div class="controls">
 
-		    	<!-- 问题ID -->
-		    	<?php if ($key == 'id'): ?>
-		    		<span class="input-normal uneditable-input"><?=$value?></span>
-		    		<input type="hidden" name="id" value="<?=$value?>">
-
 		    	<!-- 问题答案可以添加删除 js控制 -->
-		    	<?php elseif($key == 'answer'): ?>
+		    	<?php if($key == 'answer'): ?>
 
 					<div id="answer_container">
 		    			<?php foreach ($value as $key => $value): ?>

@@ -58,9 +58,29 @@ class Curd extends CI_Controller {
 
         $data['answer'] = $this->encode_answer($data['answer']);
 
-        print_r($data);
-
         $this->QuestionModel->update_entry($data);
+	}
+
+	public function question_insert()
+	{
+		$data = array();
+		$data['title']= isset($_POST['title']) ? trim($_POST['title']): $title;
+        
+        $data['answer']= isset($_POST['answer']) ? $_POST['answer'] : $answer;
+
+        $data['currect']= isset($_POST['currect']) ? trim($_POST['currect']): $currect;
+        $data['why']= isset($_POST['why']) ? trim($_POST['why']): $why;
+        $data['tip']= isset($_POST['tip']) ? trim($_POST['tip']): $tip;
+        $data['grade']= isset($_POST['grade']) ? trim($_POST['grade']): $grade;
+        $data['height']= isset($_POST['height']) ? trim($_POST['height']): $height;
+        $data['slice']= isset($_POST['slice']) ? trim($_POST['slice']): $slice;
+        $data['thumbnail']= isset($_POST['thumbnail']) ? trim($_POST['thumbnail']): $thumbnail;
+        $data['image']= isset($_POST['image']) ? trim($_POST['image']): $image;
+        $data['type']= isset($_POST['type']) ? trim($_POST['type']): $type;
+
+        $data['answer'] = $this->encode_answer($data['answer']);
+
+        $this->QuestionModel->insert_entry($data);
 	}
 
 	public function encode_answer($answer)

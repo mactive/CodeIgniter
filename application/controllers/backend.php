@@ -48,32 +48,43 @@ class Backend extends CI_Controller {
 		$this->load->view('admin/footer');
 	}
 
-	public function question($question_id,$action ='read')
+	public function question($action ='view', $question_id = '0')
 	{
-		$data['query'] = $this->QuestionModel->get_question($question_id);
-		$data['id'] = $question_id;
+		if (!empty($question_id)) {
+			# code...
+			$data['query'] = $this->QuestionModel->get_question($question_id);
+			$data['id'] = $question_id;
+
+			if ( $action == "view") {
+
+				// $data['title'] = 
+				$this->load->view('admin/header');
+				$this->load->view('admin/question',$data);
+				$this->load->view('admin/footer');
+			}
+
+			if ($action == "update") {
+				# code...
+				$this->load->view('admin/header');
+				$this->load->view('admin/question_update',$data);
+				$this->load->view('admin/footer');
+			}
+
+		}else{
+			if ($action == "add") {
+				# code...
+				$data['query'] = $this->QuestionModel->question_model();
+
+				$this->load->view('admin/header');
+				$this->load->view('admin/question_add',$data);
+				$this->load->view('admin/footer');
+			}
+		}
+
 		
-		if (!empty($question_id) && $action == "read") {
+		
 
-			// $data['title'] = 
-			$this->load->view('admin/header');
-			$this->load->view('admin/question',$data);
-			$this->load->view('admin/footer');
-		}
 
-		if ($action == "update" && !empty($question_id)) {
-			# code...
-			$this->load->view('admin/header');
-			$this->load->view('admin/question_update',$data);
-			$this->load->view('admin/footer');
-		}
-
-		if ($action == "add" && !empty($question_id)) {
-			# code...
-			$this->load->view('admin/header');
-			$this->load->view('admin/question_add',$data);
-			$this->load->view('admin/footer');
-		}
 
 	}
 
