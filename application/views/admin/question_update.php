@@ -10,9 +10,6 @@
 		$('select[name|=height]').val('<?=$query['height']?>');
 		$('select[name|=slice]').val('<?=$query['slice']?>');
 		$('select[name|=type]').val('<?=$query['type']?>');
-
-		// $('#modal-item').modal('hide');
-
     });
 </script>
 
@@ -58,7 +55,7 @@
 
 				<a class="btn btn-success" data-target="#thumbnail-item" data-toggle="modal">Upload</a>
 
-				<input type="hidden" id="thumbnail_input" name="thumbnail"  value="">
+				<input type="hidden" id="thumbnail_input" name="thumbnail"  value="<?=$value ?>">
 
 				<img src="<?=$value ?>" class="img-polaroid 200px">
 
@@ -67,7 +64,7 @@
 
 				<a class="btn btn-success" data-target="#image-item" data-toggle="modal">Upload</a>
 
-				<input type="hidden" id="image_input" name="image"  value="">
+				<input type="hidden" id="image_input" name="image"  value="<?=$value ?>">
 
 				<img src="<?=$value ?>" class="img-polaroid 200px">
 

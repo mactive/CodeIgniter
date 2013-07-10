@@ -55,8 +55,8 @@ class Curd extends CI_Controller {
         $data['grade']= isset($_POST['grade']) ? trim($_POST['grade']): $grade;
         $data['height']= isset($_POST['height']) ? trim($_POST['height']): $height;
         $data['slice']= isset($_POST['slice']) ? trim($_POST['slice']): $slice;
-        $data['thumbnail']= isset($_POST['thumbnail']) ? self::PATH.trim($_POST['thumbnail']): $thumbnail;
-        $data['image']= isset($_POST['image']) ? self::PATH.trim($_POST['image']): $image;
+        $data['thumbnail']= !empty($_POST['thumbnail']) ? trim($_POST['thumbnail']): $thumbnail;
+        $data['image']= !empty($_POST['image']) ? trim($_POST['image']): $image;
         $data['type']= isset($_POST['type']) ? trim($_POST['type']): $type;
 
         $data['answer'] = $this->encode_answer($data['answer']);
@@ -65,6 +65,11 @@ class Curd extends CI_Controller {
 
 
         $this->load->view('admin/header');
+
+        echo $_POST['thumbnail'].$_POST['image'];
+        echo $data['thumbnail']."<br>";
+        echo $data['image'];
+
         $this->load->view('message',array('title' => 'Updata success','message'=>'moving on'));
         $this->load->view('admin/footer');
 	}
@@ -82,8 +87,8 @@ class Curd extends CI_Controller {
         $data['grade']= isset($_POST['grade']) ? trim($_POST['grade']): $grade;
         $data['height']= isset($_POST['height']) ? trim($_POST['height']): $height;
         $data['slice']= isset($_POST['slice']) ? trim($_POST['slice']): $slice;
-        $data['thumbnail']= isset($_POST['thumbnail']) ? self::PATH.trim($_POST['thumbnail']): $thumbnail;
-        $data['image']= isset($_POST['image']) ? self::PATH.trim($_POST['image']): $image;
+        $data['thumbnail']= isset($_POST['thumbnail']) ? trim($_POST['thumbnail']): $thumbnail;
+        $data['image']= isset($_POST['image']) ? trim($_POST['image']): $image;
         $data['type']= isset($_POST['type']) ? trim($_POST['type']): $type;
 
         $data['answer'] = $this->encode_answer($data['answer']);

@@ -6,11 +6,14 @@
         <script type="text/javascript" src="/assets/js/jquery.js"></script>
 
         <script language="javascript">
-                var target = $('#<?=$handle_input ?>', window.parent.document);
-                target.val(<?=$time_name?>);
-                var src_string = 'http://ydkcar-question.b0.upaiyun.com/'+<?=$time_name?>;
-                target.next('img').attr('src',src_string);
+            $(document).ready(function(){
+                alert("<?=$handle_input ?>");
+                var src_string = "<?=$path?><?=$time_name?>";
 
+                var target = $('#<?=$handle_input ?>', window.parent.document);
+                target.val(src_string);
+                target.next('img').attr('src',src_string);
+            });
             // alert("<?=$handle_input ?>");
             // function show(){   
             //     //改变父窗体中的元素id为myH2的内容

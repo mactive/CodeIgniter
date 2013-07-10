@@ -69,6 +69,8 @@ class UpyunIO extends CI_Controller {
 		    // echo "=========DONE\n\r\n";
 		    $data['time_name'] = $time_name;
 		    $data['handle_input'] = $handle_input;
+		    $data['path'] = self::PATH ;
+
 		    $this->load->view('upyun/upload_success',$data);
 		}
 	    catch(Exception $e) {

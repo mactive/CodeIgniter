@@ -14,7 +14,7 @@
 		<tr>
 			<td width="200"><?=$key ?></td>
 			<td>
-				<?php if ($key == "thumbnail"): ?>
+				<?php if ($key == "thumbnail" || $key == "image" ): ?>
 
 					<img class="img-rounded" src="<?=$value?>">
 

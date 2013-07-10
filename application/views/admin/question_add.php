@@ -43,8 +43,22 @@
 
 
 		    	<!-- 问题图片 js控制 -->
-		    	<?php elseif($key == 'tt'): ?>
-		    	<input type="file" name="" value="" placeholder="">
+		    	<?php elseif($key == 'thumbnail'): ?>
+
+				<a class="btn btn-success" data-target="#thumbnail-item" data-toggle="modal">Upload</a>
+
+				<input type="hidden" id="thumbnail_input" name="thumbnail"  value="<?=$value ?>">
+
+				<img src="<?=$value ?>" class="img-polaroid 200px">
+
+		    	<!-- 大图图片 js控制 -->
+		    	<?php elseif($key == 'image'): ?>
+
+				<a class="btn btn-success" data-target="#image-item" data-toggle="modal">Upload</a>
+
+				<input type="hidden" id="image_input" name="image"  value="<?=$value ?>">
+
+				<img src="<?=$value ?>" class="img-polaroid 200px">
 
 
 		    	<!-- 问题 难度 -->
@@ -97,5 +111,46 @@
     </div>
   </div>
 </form>
+
+<!-- thumbnail content-->
+
+<div class="modal hide fade" id="thumbnail-item">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Upload Thumbnail</h3>
+    </div>
+
+
+    <iframe src="/upyunio/upload_form/thumbnail_input" style="width:100%;height:100px;border:none;">
+
+    </iframe>
+
+
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+</div>
+
+<!-- thumbnail content-->
+
+<div class="modal hide fade" id="image-item">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Upload Image</h3>
+    </div>
+
+
+    <iframe src="/upyunio/upload_form/image_input" style="width:100%;height:100px;border:none;">
+
+    </iframe>
+
+
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+</div>
+
+<!-- ///// -->
+
 
 </div>
