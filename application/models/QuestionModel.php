@@ -4,7 +4,7 @@
 
 class QuestionModel extends CI_Model {
 
-    private $title      = '默认问题';
+    private $title      = '汽车外观';
     private $answer     = array("A"=>"t1","B"=>"t2","C"=>"t3","D"=>"t4");
     private $currect    = '';
     private $why        = '';
