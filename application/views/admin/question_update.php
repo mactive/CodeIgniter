@@ -10,6 +10,13 @@
 		$('select[name|=height]').val('<?=$query['height']?>');
 		$('select[name|=slice]').val('<?=$query['slice']?>');
 		$('select[name|=type]').val('<?=$query['type']?>');
+
+		$("a[data-target=#image-item]").click(function(ev) {
+		    ev.preventDefault();
+		    var target = $(this).attr("rel");
+		    // load the url and show modal on success
+		    $("#image-item iframe").attr('src', target); 
+		});
     });
 </script>
 
@@ -53,7 +60,7 @@
 		    	<!-- 问题图片 js控制 -->
 		    	<?php elseif($key == 'thumbnail'): ?>
 
-				<a class="btn btn-success" data-target="#thumbnail-item" data-toggle="modal">Upload</a>
+				<a class="btn btn-success" data-target="#image-item" rel="/upyunio/upload_form/thumbnail_input" data-toggle="modal">Upload</a>
 
 				<input type="hidden" id="thumbnail_input" name="thumbnail"  value="<?=$value ?>">
 
@@ -62,7 +69,7 @@
 		    	<!-- 大图图片 js控制 -->
 		    	<?php elseif($key == 'image'): ?>
 
-				<a class="btn btn-success" data-target="#image-item" data-toggle="modal">Upload</a>
+				<a class="btn btn-success" data-target="#image-item" rel="/upyunio/upload_form/image_input" data-toggle="modal">Upload</a>
 
 				<input type="hidden" id="image_input" name="image"  value="<?=$value ?>">
 
@@ -130,7 +137,7 @@
     </div>
 
 
-    <iframe src="/upyunio/upload_form/thumbnail_input" style="width:100%;height:100px;border:none;">
+    <iframe style="width:100%;height:100px;border:none;">
 
     </iframe>
 
@@ -149,7 +156,7 @@
     </div>
 
 
-    <iframe src="/upyunio/upload_form/image_input" style="width:100%;height:100px;border:none;">
+    <iframe style="width:100%;height:100px;border:none;">
 
     </iframe>
 

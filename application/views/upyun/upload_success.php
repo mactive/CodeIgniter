@@ -7,7 +7,7 @@
 
         <script language="javascript">
             $(document).ready(function(){
-                var src_string = "<?=$path?><?=$time_name?>";
+                var src_string = "<?=$path?><?=$prefix?><?=$time_name?>";
 
                 var target = $('#<?=$handle_input ?>', window.parent.document);
                 target.val(src_string);

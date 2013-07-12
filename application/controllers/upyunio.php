@@ -3,7 +3,7 @@
 
 class UpyunIO extends CI_Controller {
 
-	const PATH = 'http://ydkcar-question.b0.upaiyun.com/';
+	const PATH = 'http://ydkcar-question.b0.upaiyun.com';
 
 
 	function __construct()
@@ -27,7 +27,7 @@ class UpyunIO extends CI_Controller {
     {
 		$data = array();
 		try {
-		    $list = $this->upyun->getList('/');
+		    $list = $this->upyun->getList('/t/');
 		    $data['path'] = self::PATH ;
 		    // print_r($list);
 		    $data['list'] = $list;
@@ -63,13 +63,24 @@ class UpyunIO extends CI_Controller {
 
 		    $time_name = mktime();
 
-		    $rsp = $this->upyun->writeFile('/'.$time_name, $fh, True);   // 上传图片，自动创建目录
+		    // 缩率图前缀
+		    $prefix = '';
+		    if ($handle_input == "thumbnail_input") {
+		    	$prefix = '/t/';
+		    }else if($handle_input == "image_input")
+		    {
+		    	$prefix = '/i/';
+		    }
+
+
+		    $rsp = $this->upyun->writeFile($prefix.$time_name, $fh, True);   // 上传图片，自动创建目录
 		    fclose($fh);
 		    // var_dump($rsp);
 		    // echo "=========DONE\n\r\n";
 		    $data['time_name'] = $time_name;
 		    $data['handle_input'] = $handle_input;
 		    $data['path'] = self::PATH ;
+		    $data['prefix'] = $prefix ;
 
 		    $this->load->view('upyun/upload_success',$data);
 		}

@@ -4,7 +4,7 @@
 		
 		<span class='span2'>
 			
-			<img src="<?=$path?><?=$value['name']?>!200pxWidth" alt="">
+			<img src="<?=$path?>/t/<?=$value['name']?>!200pxWidth" alt="">
 			<?=$value['name']?>
 		</span>
 

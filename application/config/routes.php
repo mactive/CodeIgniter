@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "";
+$route['default_controller'] = "backend/questions";
 $route['404_override'] = '';
 
 //level o
