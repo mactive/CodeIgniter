@@ -37,7 +37,7 @@ class Curd extends CI_Controller {
     {
         // Call the Model constructor
         parent::__construct();
-        $this->load->model("QuestionModel");
+        $this->load->model("Question_model");
     }
 
 
@@ -61,7 +61,7 @@ class Curd extends CI_Controller {
 
         $data['answer'] = $this->encode_answer($data['answer']);
 
-        $this->QuestionModel->update_entry($data);
+        $this->Question_model->update_entry($data);
 
         $this->load->view('admin/header');
         $this->load->view('message',array('title' => 'Updata success','message'=>'moving on'));
@@ -87,7 +87,7 @@ class Curd extends CI_Controller {
 
         $data['answer'] = $this->encode_answer($data['answer']);
 
-        $this->QuestionModel->insert_entry($data);
+        $this->Question_model->insert_entry($data);
 
         $this->load->view('admin/header');
         $this->load->view('message',array('title' => 'Insert success','message'=>'Keep walking.'));

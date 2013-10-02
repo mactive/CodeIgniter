@@ -22,7 +22,7 @@ class Backend extends CI_Controller {
     {
         // Call the Model constructor
         parent::__construct();
-        $this->load->model("QuestionModel");
+        $this->load->model("Question_model");
     }
 
 
@@ -40,7 +40,7 @@ class Backend extends CI_Controller {
 	 */
 	public function questions()
 	{
-		$data['query'] = $this->QuestionModel->get_last_ten_entries();
+		$data['query'] = $this->Question_model->get_last_ten_entries();
 
 
 		$this->load->view('admin/header');
@@ -52,7 +52,7 @@ class Backend extends CI_Controller {
 	{
 		if (!empty($question_id)) {
 			# code...
-			$data['query'] = $this->QuestionModel->get_question($question_id);
+			$data['query'] = $this->Question_model->get_question($question_id);
 			$data['id'] = $question_id;
 
 			if ( $action == "view") {
@@ -71,14 +71,14 @@ class Backend extends CI_Controller {
 			}
 			if ($action == "delete") {
 				# code...
-				$this->QuestionModel->delete_entry($question_id);
+				$this->Question_model->delete_entry($question_id);
 				redirect('/backend/questions');
 			}
 
 		}else{
 			if ($action == "add") {
 				# code...
-				$data['query'] = $this->QuestionModel->question_model();
+				$data['query'] = $this->Question_model->question_model();
 
 				$this->load->view('admin/header');
 				$this->load->view('admin/question_add',$data);
