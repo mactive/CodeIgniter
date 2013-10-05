@@ -40,6 +40,7 @@ class Backend extends CI_Controller {
 	 */
 	public function questions()
 	{
+		echo "questions";
 		$data['query'] = $this->Question_model->get_last_ten_entries();
 
 
